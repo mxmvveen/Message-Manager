@@ -1,0 +1,43 @@
+@import "~styles/vars";
+
+header {
+  height: 70px;
+  background-color: $blue;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  border-bottom: solid 1px #0080da;
+  box-shadow: 0px -3px 5px 2px #0000008a;
+  ul {
+    display: flex;
+    justify-content: flex-start;
+    list-style-type: none;
+    height: 100%;
+    margin: 0;
+    align-items: center;
+  }
+
+  li {
+    padding-left: 20px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+    &.active,
+    &:hover {
+        text-decoration: underline;
+    }
+  }
+
+  nav {
+    position: relative;
+  }
+  h1 {
+    font-size: 1.3em;
+    font-family: sans-serif;
+    margin: auto 0;
+    color: $white;
+  }
+}
