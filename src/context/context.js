@@ -5,12 +5,44 @@ const MessageContext = React.createContext();
 export class MessageProvider extends Component {
   
   state = {
-      message: 'This is the initial message!',
-      addMessage: this.addMessage
+    users: [{
+      frederik: {
+        messages: []
+      },
+      wouter: {
+        messages: []
+      },
+      samantha: {
+        messages: []
+      },
+      jessy: {
+        messages: []
+      },
+      pieter: {
+        messages: []
+      },
+    }],
+    messages: [{
+      title: 'dit is de titel',
+      message: 'blaat'
+    }],
+    addMessage: () => this.addMessage
   }
   
   addMessage = (e) => {
     e.preventDefault();
+    const title = e.target.title.value;
+    const message = e.target.message.value;
+    
+    this.setState({
+      messages: [...this.state.messages, {
+        title: title,
+        message: message
+      }]
+    });
+
+    e.target.title.value = '';
+    e.target.message.value = '';
   }
   
   render () {

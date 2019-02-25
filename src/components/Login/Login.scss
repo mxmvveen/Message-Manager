@@ -1,0 +1,11 @@
+@import '~styles/vars';
+@import '~styles/mixins';
+
+.login-wrapper {
+    height: calc(100% - 85px);
+    display: flex;
+}
+.login-container {
+    width: 500px;
+    margin: auto;
+}

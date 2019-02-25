@@ -1,3 +1,6 @@
+html, body, #root, .App, .app-wrapper {
+    height: 100%;
+}
 body {
     font-family: sans-serif;
     color: $darkGray;
@@ -5,9 +8,13 @@ body {
 h2 {
     font-size: 2em;
     color: $darkGray;
+    margin-top: 60px;
 }
 .container {
     width: 1200px;
     max-width: 100%;
     margin: auto;
+    &.small-container {
+        width: 850px;
+    }
 }

@@ -1,14 +1,6 @@
 @import '~styles/vars';
 @import '~styles/mixins';
 
-.container {
-    &.form-container {
-        width: 850px;
-    }
-}
-h2 {
-    margin-top: 60px;
-}
 .input {
     @include formFields;
     width: 500px;
