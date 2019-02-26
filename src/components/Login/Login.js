@@ -1,18 +1,26 @@
 import React from 'react';
+import { MessageConsumer } from 'context/context';
+
 import './Login.scss';
 
 class Login extends React.Component {
 
+  formSubmit(e) {
+    e.preventDefault();
+  }
+
   render() {
     return (
+      <MessageConsumer>
+        { ({login}) => (
         <div className="login-wrapper">
           <div className="login-container">
-            <form className="message-form">
+            <form className="message-form" onSubmit={login()}>
               <label htmlFor="username">
                 Username
               </label>
               <div>
-                <input name="title" type="text" id="title" className="input" ref={this.title} />
+                <input name="title" type="text" id="username" className="input" ref={this.title} />
               </div>
               <label htmlFor="password">
                 Password
@@ -26,6 +34,8 @@ class Login extends React.Component {
             </form>
           </div>
         </div>
+        )}
+        </MessageConsumer>
     );
   }
 }

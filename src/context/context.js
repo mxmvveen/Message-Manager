@@ -5,7 +5,7 @@ const MessageContext = React.createContext();
 export class MessageProvider extends Component {
   
   state = {
-    users: [{
+    users: {
       frederik: {
         messages: []
       },
@@ -21,24 +21,46 @@ export class MessageProvider extends Component {
       pieter: {
         messages: []
       },
-    }],
+    },
     messages: [{
       title: 'dit is de titel',
       message: 'blaat'
     }],
+    loggedInUser: '',
+    login: () => this.login,
     addMessage: () => this.addMessage
+  }
+
+
+  login = e => {
+    const users = Object.keys(this.state.users);
+    const user = e.target.username.value;
+
+    if (users.indexOf(user) > -1) {
+      this.setState({
+        loggedInUser: user
+      });
+    }
+    e.preventDefault();
   }
   
   addMessage = (e) => {
     e.preventDefault();
     const title = e.target.title.value;
     const message = e.target.message.value;
-    
+
+    const loggedInUserName = this.loggedInUser;
+
+    const currentUserMessages = [...this.state.users[loggedInUserName].messages, {
+          title: title,
+          message: message
+        }];
+
     this.setState({
-      messages: [...this.state.messages, {
-        title: title,
-        message: message
-      }]
+        users: {
+          ...this.state.users,
+          [loggedInUserName]: currentUserMessages
+        }
     });
 
     e.target.title.value = '';

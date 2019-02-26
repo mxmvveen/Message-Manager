@@ -1,12 +1,16 @@
 import React from 'react';
 import './Header.scss';
 
+import { MessageConsumer } from 'context/context';
+
 import { NavLink } from 'react-router-dom';
 
 class Header extends React.Component {
 
   render() {
     return (
+      <MessageConsumer>
+        { ({addMessage}) => (
         <header>
             <h1>Message Manager</h1>
             <nav>
@@ -20,6 +24,8 @@ class Header extends React.Component {
               </ul>
             </nav>
         </header>
+        )}
+        </MessageConsumer>
     );
   }
 }
