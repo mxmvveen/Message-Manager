@@ -1,5 +1,5 @@
 import React from 'react';
-import fakeAuth from './fakeAuth';
+import { fakeAuth } from './fakeAuth';
 
 import {
     Route,

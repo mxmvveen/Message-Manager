@@ -13,55 +13,10 @@ export class MessageProvider extends Component {
     addMessage: () => this.addMessage
   }
 
-  users = {
-    frederik: {
-      messages: []
-    },
-    wouter: {
-      messages: []
-    },
-    samantha: {
-      messages: []
-    },
-    jessy: {
-      messages: []
-    },
-    pieter: {
-      messages: []
-    },
-  }
-
-  login = e => {
-    const users = Object.keys(this.users);
-    const user = e.target.username.value;
-
-    if (users.indexOf(user) > -1) {
-      this.setState({
-        loggedInUser: user
-      });
-      localStorage.setItem('loggedin', true);
-    }
-    e.preventDefault();
-  }
-  
   addMessage = (e) => {
     e.preventDefault();
     const title = e.target.title.value;
     const message = e.target.message.value;
-
-    // const loggedInUserName = this.state.loggedInUser;
-
-    // const currentUserMessages = [...this.state.users[loggedInUserName].messages, {
-    //       title: title,
-    //       message: message
-    //     }];
-
-    // this.setState({
-    //     users: {
-    //       ...this.state.users,
-    //       [loggedInUserName]: currentUserMessages
-    //     }
-    // });
 
     this.setState({
       messages: [...this.state.messages, {

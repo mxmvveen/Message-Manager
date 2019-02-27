@@ -1,5 +1,5 @@
 import React from 'react';
-import fakeAuth from 'components/Routing/fakeAuth';
+import { authenticate } from 'components/Routing/fakeAuth';
 import {
   Redirect
 } from 'react-router-dom';
@@ -14,11 +14,11 @@ class Login extends React.Component {
 
   login = e => {
     e.preventDefault();
-    fakeAuth.authenticate(() => {
+    authenticate(e, () => {
       this.setState(() => ({
         redirectToReferrer: true
-      }))
-    })
+      }));
+    });
   }
 
   render() {

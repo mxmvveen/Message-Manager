@@ -23,7 +23,6 @@ class Routing extends Component {
                     <Header />
                     <Switch>
                         <LoginRoute path="/" exact component={Login} />
-                        {/* <Route path="/inbox" exact component={Messages} /> */}
                         <PrivateRoute path="/inbox" exact component={Messages} />
                         <PrivateRoute path="/send-message" exact component={SendMessage} />
                         <PrivateRoute path="/:message_id" exact component={Details} />
