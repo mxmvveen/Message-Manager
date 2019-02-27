@@ -11,10 +11,10 @@ class SendMessage extends Component {
   }
 
 
-  clearFields = e => {
-    const title = this.title.current;
-    console.log(title);
-  }
+  // clearFields = e => {
+  //   const title = this.title.current;
+  //   console.log(title);
+  // }
 
   render() {
     return (

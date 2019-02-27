@@ -8,7 +8,6 @@ class Header extends React.Component {
 
   logout = () => {
     localStorage.clear();
-    console.log('logged out!');
   }
 
   render() {
@@ -16,14 +15,17 @@ class Header extends React.Component {
       <MessageConsumer>
         { ({loggedInUser}) => (
         <header>
-            <h1>Message Manager</h1>
+            <h1><Link to="/">Message Manager</Link></h1>
             <nav>
               <ul>
-                <li>
+                {/* <li>
                   { loggedInUser === null 
                   ? <NavLink to="/" exact>Login</NavLink>
                   : <NavLink to="/inbox" exact>Inbox</NavLink>
                   }
+                </li> */}
+                <li>
+                  <NavLink to="/inbox" exact>Inbox</NavLink>
                 </li>
                 <li>
                   <NavLink to="/send-message" exact>Form</NavLink>

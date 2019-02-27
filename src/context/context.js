@@ -1,27 +1,9 @@
 import React, { Component } from 'react';
 const MessageContext = React.createContext();
 
-
 export class MessageProvider extends Component {
   
   state = {
-    users: {
-      frederik: {
-        messages: []
-      },
-      wouter: {
-        messages: []
-      },
-      samantha: {
-        messages: []
-      },
-      jessy: {
-        messages: []
-      },
-      pieter: {
-        messages: []
-      },
-    },
     messages: [{
       title: 'dit is de titel',
       message: 'blaat'
@@ -31,9 +13,26 @@ export class MessageProvider extends Component {
     addMessage: () => this.addMessage
   }
 
+  users = {
+    frederik: {
+      messages: []
+    },
+    wouter: {
+      messages: []
+    },
+    samantha: {
+      messages: []
+    },
+    jessy: {
+      messages: []
+    },
+    pieter: {
+      messages: []
+    },
+  }
 
   login = e => {
-    const users = Object.keys(this.state.users);
+    const users = Object.keys(this.users);
     const user = e.target.username.value;
 
     if (users.indexOf(user) > -1) {
@@ -50,18 +49,25 @@ export class MessageProvider extends Component {
     const title = e.target.title.value;
     const message = e.target.message.value;
 
-    const loggedInUserName = this.state.loggedInUser;
+    // const loggedInUserName = this.state.loggedInUser;
 
-    const currentUserMessages = [...this.state.users[loggedInUserName].messages, {
-          title: title,
-          message: message
-        }];
+    // const currentUserMessages = [...this.state.users[loggedInUserName].messages, {
+    //       title: title,
+    //       message: message
+    //     }];
+
+    // this.setState({
+    //     users: {
+    //       ...this.state.users,
+    //       [loggedInUserName]: currentUserMessages
+    //     }
+    // });
 
     this.setState({
-        users: {
-          ...this.state.users,
-          [loggedInUserName]: currentUserMessages
-        }
+      messages: [...this.state.messages, {
+        title: title,
+        message: message
+      }]
     });
 
     e.target.title.value = '';
