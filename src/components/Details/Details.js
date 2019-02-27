@@ -9,7 +9,6 @@ class Details extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     const id = this.props.match.params.message_id;
     this.setState({
       id: id
@@ -20,20 +19,16 @@ class Details extends Component {
     return (
       <MessageConsumer>
       {({messages}) => {
-        
         const selectedMessage = messages.find(v => v.title === id);
-
         if (selectedMessage !== undefined) {
           return (
             <div className="container small-container">
               <h2>
                   {selectedMessage.title}
               </h2>
-
               <p>
                 { selectedMessage.message }
               </p>
-
               <Link to='/' className="back-button">
                   Back
               </Link>

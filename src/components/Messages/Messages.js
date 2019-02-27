@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import './Messages.scss';
 class Messages extends Component {
   render() {
-    console.log('d');
     return (
       <div className="container small-container">
         <h2>

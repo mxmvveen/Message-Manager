@@ -26,7 +26,7 @@ export class MessageProvider extends Component {
       title: 'dit is de titel',
       message: 'blaat'
     }],
-    loggedInUser: '',
+    loggedInUser: null,
     login: () => this.login,
     addMessage: () => this.addMessage
   }
@@ -40,6 +40,7 @@ export class MessageProvider extends Component {
       this.setState({
         loggedInUser: user
       });
+      localStorage.setItem('loggedin', true);
     }
     e.preventDefault();
   }
@@ -49,7 +50,7 @@ export class MessageProvider extends Component {
     const title = e.target.title.value;
     const message = e.target.message.value;
 
-    const loggedInUserName = this.loggedInUser;
+    const loggedInUserName = this.state.loggedInUser;
 
     const currentUserMessages = [...this.state.users[loggedInUserName].messages, {
           title: title,

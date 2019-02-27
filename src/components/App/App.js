@@ -11,10 +11,21 @@ import { MessageProvider } from 'context/context';
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom'
 
 import './App.scss';
+
+function PrivateRoute ({component: Component, auth}) {
+  return (
+    <Route
+      render={(props) => auth
+        ? <Component {...props} />
+        : <Redirect to={{pathname: '/', state: {from: props.location}}} />}
+    />
+  )
+}
 
 class App extends Component {
   render() {
@@ -26,7 +37,8 @@ class App extends Component {
             <Header />
             <Switch>
               <Route path="/" exact component={Login} />
-              <Route path="/inbox" exact component={Messages} />
+              {/* <Route path="/inbox" exact component={Messages} /> */}
+              <PrivateRoute path="/inbox" exact component={Messages} auth={JSON.parse(localStorage.getItem('loggedin'))} />
               <Route path="/send-message" exact component={SendMessage} />
               <Route path="/:message_id" exact component={Details} />
             </Switch>
