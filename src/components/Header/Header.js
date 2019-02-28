@@ -30,9 +30,9 @@ class Header extends React.Component {
                 <li>
                   <NavLink to="/send-message" exact>Form</NavLink>
                 </li>
-                { loggedInUser !== null && <li>
+                {/* <li>
                   <Link to="/" onClick={this.logout}>logout</Link>
-                </li> }
+                </li> */}
               </ul>
             </nav>
         </header>

@@ -1,34 +1,27 @@
-export let users = {};
+let userNames;
 export let loggedInUser;
-const apiBaseUrl = "http://localhost";
+const protocol = 'http://'
+const apiBaseUrl = "localhost";
 const apiPort = 8000;
-const apiUri = `${apiBaseUrl}:${apiPort}`;
+const apiUri = `${protocol}${apiBaseUrl}:${apiPort}`;
 
 export const getUsers = () => {
-  const result = fetch(apiUri)
+  fetch(`${apiUri}/getUsers`)
     .then(response => response.json())
-    .then(data => {
-      users = data.users;
-      return users;
-    }).catch(err => {
-      throw err;
-    });
-
-  return result;
-};
+    .then(data => userNames = data);
+}
 
 export function authenticate(e, cb) {
-  const userNames = Object.keys(users);
   const user = e.target.username.value;
 
   if (userNames.indexOf(user) > -1) {
-    fakeAuth.isAuthenticated = true;
+    authService.isAuthenticated = true;
     loggedInUser = user;
     cb(user);
   }
 }
 
-export const fakeAuth = {
+export const authService = {
   isAuthenticated: false,
   authenticate: authenticate,
   signout(cb) {
@@ -36,4 +29,3 @@ export const fakeAuth = {
     setTimeout(cb, 100);
   }
 };
-

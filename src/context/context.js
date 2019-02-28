@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-const MessageContext = React.createContext();
 
+export const MessageContext = React.createContext();
 export class MessageProvider extends Component {
   
   state = {
     messages: [{
+      title: 'de title',
+      message: 'de message'
     }],
-    loggedInUser: null,
-    login: () => this.login,
     addMessage: () => this.addMessage
   }
 
@@ -15,9 +15,7 @@ export class MessageProvider extends Component {
     e.preventDefault();
     const title = e.target.title.value;
     const message = e.target.message.value;
-
-    console.log(e.target.title);
-
+    
     this.setState({
       messages: [...this.state.messages, {
         title: title,
@@ -28,6 +26,11 @@ export class MessageProvider extends Component {
     e.target.title.value = '';
     e.target.message.value = '';
   }
+
+  getMessage = () => {
+    
+  }
+
   
   render () {
     return (

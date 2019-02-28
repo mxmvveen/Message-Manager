@@ -1,5 +1,5 @@
 import React from 'react';
-import { authenticate, getUsers } from 'components/Routing/fakeAuth';
+import { authenticate, getUsers } from 'context/authService';
 import {
   Redirect
 } from 'react-router-dom';
@@ -7,11 +7,9 @@ import {
 import './Login.scss';
 
 class Login extends React.Component {
-
   state = {
     redirectToReferrer: false
   }
-
   login = e => {
     e.preventDefault();
     authenticate(e, () => {
@@ -22,9 +20,7 @@ class Login extends React.Component {
   }
 
   componentDidMount() {
-    getUsers().then(data => {
-      console.log(data);
-    });
+    getUsers();
   }
 
   render() {

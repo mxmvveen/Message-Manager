@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import { MessageConsumer } from 'context/context';
+import React, { useContext } from "react";
+import { MessageConsumer, MessageContext } from 'context/context';
 import { Link } from 'react-router-dom';
 
 import './Messages.scss';
-class Messages extends Component {
-  render() {
+const Messages = () => {
+    const contextValue = useContext(MessageContext);
+    console.log(contextValue);    
     return (
       <div className="container small-container">
         <h2>
@@ -26,7 +27,7 @@ class Messages extends Component {
         </MessageConsumer>
       </div>
     );
-  }
+  
 }
 
 export default Messages;
