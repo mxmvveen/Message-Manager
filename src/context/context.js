@@ -5,8 +5,6 @@ export class MessageProvider extends Component {
   
   state = {
     messages: [{
-      title: 'dit is de titel',
-      message: 'blaat'
     }],
     loggedInUser: null,
     login: () => this.login,
@@ -17,6 +15,8 @@ export class MessageProvider extends Component {
     e.preventDefault();
     const title = e.target.title.value;
     const message = e.target.message.value;
+
+    console.log(e.target.title);
 
     this.setState({
       messages: [...this.state.messages, {

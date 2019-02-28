@@ -12,7 +12,7 @@ class Messages extends Component {
         </h2>
         <MessageConsumer>
           {({messages}) => (
-                <ul className="message-list">
+            <ul className="message-list">
                   { messages.map((v, key) => {
                     return (<li key={key}>
                                     <Link to={v.title}>

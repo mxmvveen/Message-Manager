@@ -1,5 +1,5 @@
 import React from 'react';
-import { authenticate } from 'components/Routing/fakeAuth';
+import { authenticate, getUsers } from 'components/Routing/fakeAuth';
 import {
   Redirect
 } from 'react-router-dom';
@@ -18,6 +18,12 @@ class Login extends React.Component {
       this.setState(() => ({
         redirectToReferrer: true
       }));
+    });
+  }
+
+  componentDidMount() {
+    getUsers().then(data => {
+      console.log(data);
     });
   }
 
