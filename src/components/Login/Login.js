@@ -1,5 +1,5 @@
 import React from 'react';
-import { authenticate, getUsers } from 'context/authService';
+import { authenticate } from 'context/authService';
 import {
   Redirect
 } from 'react-router-dom';
@@ -20,7 +20,7 @@ class Login extends React.Component {
   }
 
   componentDidMount() {
-    getUsers();
+    // getUsers();
   }
 
   render() {

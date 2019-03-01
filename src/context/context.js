@@ -4,15 +4,14 @@ export const MessageContext = React.createContext();
 export class MessageProvider extends Component {
   
   state = {
-    messages: [{
-      title: 'de title',
-      message: 'de message'
-    }],
-    addMessage: () => this.addMessage
+    messages: [],
+    addMessage: () => this.addMessage,
+    setMessage: val => this.setMessage(val)
   }
 
   addMessage = (e) => {
     e.preventDefault();
+    const receiver = e.target.receiver.value;
     const title = e.target.title.value;
     const message = e.target.message.value;
     
@@ -27,8 +26,10 @@ export class MessageProvider extends Component {
     e.target.message.value = '';
   }
 
-  getMessage = () => {
-    
+  setMessage = val => {
+    this.setState({
+      messages: val.messages
+    });
   }
 
   

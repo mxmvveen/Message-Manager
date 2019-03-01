@@ -3,11 +3,7 @@ import { MessageConsumer } from 'context/context';
 import './Send-message.scss';
 
 class SendMessage extends Component {
-  constructor(props) {
-    super(props);
-    this.title = React.createRef();
-  }
-      
+        
     render() {
     return (
       <MessageConsumer>
@@ -17,11 +13,17 @@ class SendMessage extends Component {
               Send a message
             </h2>
             <form className="message-form" onSubmit={addMessage()}>
+              <label htmlFor="receiver">
+                To
+              </label>
+              <div>
+                <input type="text" name="receiver" className="input" />
+              </div>
               <label htmlFor="title">
                 Title
               </label>
               <div>
-                <input name="title" type="text" id="title" className="input" ref={this.title} />
+                <input name="title" type="text" id="title" className="input" />
               </div>
               <label htmlFor="message">
                 Message
