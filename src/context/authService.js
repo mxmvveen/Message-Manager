@@ -8,6 +8,8 @@ export let userLoggedIn = false;
 
 export let dataLoaded = false;
 
+export let routeHistory;
+
 export function authenticate(e, cb) {
   const user = e.target.username.value;
     fetch(`${apiUri}/login`, {
@@ -33,7 +35,17 @@ export const loadData = () => {
 }
 
 export const loginUser = () => {
-    userLoggedIn = true;
+  userLoggedIn = true;
+}
+
+export const logoutUser = () => {
+  userLoggedIn = false;
+  userInfo = undefined;
+}
+
+export const setHistory = history => {
+  routeHistory = history;
+  debugger
 }
 
 export const saveNewMessage = data => {

@@ -6,7 +6,7 @@ import {
 
 import './Login.scss';
 
-import { loginUser } from 'context/authService';
+import { loginUser, setHistory } from 'context/authService';
 
 class Login extends React.Component {
   state = {
@@ -15,6 +15,7 @@ class Login extends React.Component {
   login = e => {
     e.preventDefault();
     authenticate(e, () => {
+      setHistory(this.props.history);
       loginUser();
       this.setState(() => ({
         redirectToReferrer: true
