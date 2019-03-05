@@ -45,7 +45,6 @@ export const logoutUser = () => {
 
 export const setHistory = history => {
   routeHistory = history;
-  debugger
 }
 
 export const saveNewMessage = data => {
