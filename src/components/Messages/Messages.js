@@ -1,16 +1,16 @@
-import React, { useContext } from "react";
-import { MessageConsumer, MessageContext } from 'context/context';
+import React from "react";
+import { MessageConsumer } from 'context/context';
 import { Link } from 'react-router-dom';
 
-import { userInfo, userLoggedIn, getUserMessages } from 'context/authService';
+// import { userInfo, userLoggedIn, getUserMessages } from 'context/authService';
+// import GetMessages from 'context/setContextMessages';
+
 
 import './Messages.scss';
 const Messages = () => {
-    const contextUser = useContext(MessageContext);
-    if (!userLoggedIn) {
-      getUserMessages();
-        contextUser.setMessage(userInfo);
-    }
+
+//  GetMessages(useContext, MessageContext, userInfo, userLoggedIn, getUserMessages);
+
     return (
       <div className="container small-container">
         <h2>
@@ -20,7 +20,7 @@ const Messages = () => {
           {({messages}) => (
             <ul className="message-list">
                   { messages.map((v, key) => {
-                    return (<li key={key}>
+                    return (<li key={key} className={v.read ? 'read' : 'unread'}>
                                     <Link to={v.title}>
                                       {v.title}
                                     </Link>

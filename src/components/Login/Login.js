@@ -6,6 +6,8 @@ import {
 
 import './Login.scss';
 
+import { loginUser } from 'context/authService';
+
 class Login extends React.Component {
   state = {
     redirectToReferrer: false
@@ -13,14 +15,11 @@ class Login extends React.Component {
   login = e => {
     e.preventDefault();
     authenticate(e, () => {
+      loginUser();
       this.setState(() => ({
         redirectToReferrer: true
       }));
     });
-  }
-
-  componentDidMount() {
-    // getUsers();
   }
 
   render() {

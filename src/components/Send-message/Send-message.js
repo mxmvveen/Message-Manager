@@ -5,6 +5,7 @@ import './Send-message.scss';
 class SendMessage extends Component {
         
     render() {
+    const { history } = this.props;
     return (
       <MessageConsumer>
         { ({addMessage}) => (
@@ -12,13 +13,9 @@ class SendMessage extends Component {
             <h2>
               Send a message
             </h2>
-            <form className="message-form" onSubmit={addMessage()}>
-              <label htmlFor="receiver">
-                To
-              </label>
-              <div>
-                <input type="text" name="receiver" className="input" />
-              </div>
+            <form className="message-form" onSubmit={e => addMessage(e, () => {
+              history.push('/inbox');
+            })}>
               <label htmlFor="title">
                 Title
               </label>

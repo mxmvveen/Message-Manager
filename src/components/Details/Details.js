@@ -18,8 +18,13 @@ class Details extends Component {
     const { id } = this.state;
     return (
       <MessageConsumer>
-      {({messages}) => {
-        const selectedMessage = messages.find(v => v.title === id);
+      {({messages, updateReadMessage}) => {
+        const selectedMessage = messages.find(v => {
+          if (v.title === id) {
+            updateReadMessage(id);
+          }
+          return v.title === id;
+        });
         if (selectedMessage !== undefined) {
           return (
             <div className="container small-container">

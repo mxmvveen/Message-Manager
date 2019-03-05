@@ -1,35 +1,51 @@
 import React, { Component } from 'react';
 
+import { saveNewMessage } from 'context/authService';
 export const MessageContext = React.createContext();
 export class MessageProvider extends Component {
   
   state = {
     messages: [],
-    addMessage: () => this.addMessage,
-    setMessage: val => this.setMessage(val)
+    addMessage: (e, cb) => this.addMessage(e, cb),
+    setMessage: val => this.setMessage(val),
+    updateReadMessage: val => this.updateReadMessage(val)
   }
 
-  addMessage = (e) => {
+  addMessage = (e, cb) => {
     e.preventDefault();
-    const receiver = e.target.receiver.value;
     const title = e.target.title.value;
     const message = e.target.message.value;
+
+    const newMessagesData = [...this.state.messages, {
+      title: title,
+      message: message,
+      read: false
+    }];
     
     this.setState({
-      messages: [...this.state.messages, {
-        title: title,
-        message: message
-      }]
+      messages: newMessagesData
     });
-
+    
     e.target.title.value = '';
     e.target.message.value = '';
+    saveNewMessage(newMessagesData);
+    cb();
   }
-
+  
   setMessage = val => {
     this.setState({
       messages: val.messages
     });
+  }
+  
+  updateReadMessage = val => {
+    const { messages } = this.state;
+    messages.forEach(v => {
+      if (v.title === val) {
+        v.read = true;
+      }
+    });
+    saveNewMessage(messages);
   }
 
   

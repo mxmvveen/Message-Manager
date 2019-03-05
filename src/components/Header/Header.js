@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { useContext }  from 'react';
 import './Header.scss';
 
 import { MessageConsumer } from 'context/context';
 import { NavLink, Link } from 'react-router-dom';
 
-class Header extends React.Component {
+import { MessageContext } from 'context/context';
 
-  logout = () => {
-    localStorage.clear();
-  }
+import { userInfo, userLoggedIn } from 'context/authService';
+import GetMessages from 'context/setContextMessages';
+import { loadData, dataLoaded } from 'context/authService';
 
-  render() {
+// class Header extends React.Component {
+const Header = () => {
+  // const logout = () => {
+  //   localStorage.clear();
+  // }
+
+  console.log(userInfo);
+
+ GetMessages(useContext, MessageContext, userInfo, userLoggedIn, loadData, dataLoaded);
+
     return (
       <MessageConsumer>
         { ({loggedInUser}) => (
@@ -18,12 +27,12 @@ class Header extends React.Component {
             <h1><Link to="/">Message Manager</Link></h1>
             <nav>
               <ul>
-                {/* <li>
+                <li>
                   { loggedInUser === null 
                   ? <NavLink to="/" exact>Login</NavLink>
                   : <NavLink to="/inbox" exact>Inbox</NavLink>
                   }
-                </li> */}
+                </li>
                 <li>
                   <NavLink to="/inbox" exact>Inbox</NavLink>
                 </li>
@@ -40,6 +49,5 @@ class Header extends React.Component {
         </MessageConsumer>
     );
   }
-}
 
 export default Header;

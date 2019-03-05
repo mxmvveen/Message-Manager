@@ -4,6 +4,9 @@
     list-style-type: none;
     li {
         border-bottom: solid 1px $lightGray;
+        &.unread {
+            font-weight: bold;
+        }
         &:first-child {
             border-top: solid 1px $lightGray;
         }
