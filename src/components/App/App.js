@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Routing from 'components/Routing/Routing';
 
 import './App.scss';
 
-class App extends Component {
-  render() {
-    return (
-      <Routing />
-    );
-  }
+const App = () => {
+  return (
+    <Routing />
+  );
 }
 
 export default App;

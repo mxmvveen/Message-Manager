@@ -42,5 +42,10 @@ header {
     font-family: sans-serif;
     margin: auto 0;
     color: $white;
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-
-import { saveNewMessage } from 'context/authService';
+import { saveNewMessage, getUsers } from 'context/authService';
 export const MessageContext = React.createContext();
 export class MessageProvider extends Component {
   
@@ -8,7 +7,8 @@ export class MessageProvider extends Component {
     messages: [],
     addMessage: (e, cb) => this.addMessage(e, cb),
     setMessage: val => this.setMessage(val),
-    updateReadMessage: val => this.updateReadMessage(val)
+    updateReadMessage: val => this.updateReadMessage(val),
+    setUsers: val => this.setUsers(val)
   }
 
   addMessage = (e, cb) => {
@@ -36,6 +36,12 @@ export class MessageProvider extends Component {
     this.setState({
       messages: val.messages
     });
+  }
+  
+  setUsers = val => {
+    this.setState({
+      users: val
+    })
   }
   
   updateReadMessage = val => {

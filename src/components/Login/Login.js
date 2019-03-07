@@ -6,7 +6,7 @@ import {
 
 import './Login.scss';
 
-import { loginUser, setHistory } from 'context/authService';
+import { loginUser } from 'context/authService';
 
 class Login extends React.Component {
   state = {
@@ -15,7 +15,6 @@ class Login extends React.Component {
   login = e => {
     e.preventDefault();
     authenticate(e, () => {
-      setHistory(this.props.history);
       loginUser();
       this.setState(() => ({
         redirectToReferrer: true
@@ -26,9 +25,9 @@ class Login extends React.Component {
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/inbox' } };
     const { redirectToReferrer } = this.state;
-
+    
     if (redirectToReferrer === true) {
-        return <Redirect to={from} />
+      return <Redirect to={from} />
     }
     return (
           <div className="login-wrapper">

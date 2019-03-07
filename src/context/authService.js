@@ -8,7 +8,7 @@ export let userLoggedIn = false;
 
 export let dataLoaded = false;
 
-export let routeHistory;
+export let users;
 
 export function authenticate(e, cb) {
   const user = e.target.username.value;
@@ -23,28 +23,20 @@ export function authenticate(e, cb) {
     .then(response => {
       if (response.user !== false) {
         userInfo = response;
-        authService.isAuthenticated = true;
+        users = response.users;
         cb();
       }
     })
     .catch(error => console.error('Error:', error));
 }
 
-export const loadData = () => {
-  dataLoaded = true;
-}
+export const loadData = () => dataLoaded = true;
 
-export const loginUser = () => {
-  userLoggedIn = true;
-}
+export const loginUser = () => userLoggedIn = true;
 
 export const logoutUser = () => {
   userLoggedIn = false;
   userInfo = undefined;
-}
-
-export const setHistory = history => {
-  routeHistory = history;
 }
 
 export const saveNewMessage = data => {
@@ -63,12 +55,3 @@ export const saveNewMessage = data => {
   })
   .catch(error => console.error('Error:', error));
 }
-
-export const authService = {
-  isAuthenticated: false,
-  authenticate: authenticate,
-  signout(cb) {
-    this.isAuthenticated = false;
-    setTimeout(cb, 100);
-  }
-};

@@ -1,5 +1,5 @@
 import React from 'react';
-import { authService } from 'context/authService';
+import { userLoggedIn } from 'context/authService';
 
 import {
     Route,
@@ -8,7 +8,7 @@ import {
 
 export const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={(props) => (
-      authService.isAuthenticated === true
+      userLoggedIn === true
         ? <Component {...props} />
         : <Redirect to={{
             pathname: '/',
@@ -19,7 +19,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => (
 
 export const LoginRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={(props) => (
-      authService.isAuthenticated === false
+      userLoggedIn === false
         ? <Component {...props} />
         : <Redirect to={{
             pathname: '/inbox',
