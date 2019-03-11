@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { saveNewMessage, getUsers } from 'context/authService';
+import { saveNewMessage } from 'context/authService';
 export const MessageContext = React.createContext();
 export class MessageProvider extends Component {
   

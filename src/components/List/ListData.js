@@ -1,6 +1,5 @@
 import React from "react";
 import { MessageConsumer } from 'context/context';
-import { Link } from 'react-router-dom';
 import List from 'components/List/List';
 
 const ListData = (props) => {
